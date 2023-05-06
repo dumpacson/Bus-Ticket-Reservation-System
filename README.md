@@ -11,16 +11,25 @@ Abdelhadi hadj sahraoui (1919059)
 
 ## Tasks
 Safwan:
-- Main Menu
+- Main class
+- Main()
+- DisplaySeats()
 
 Abdelhadi:
-- s
+- PrintReceipt()
+- Seat class
+- Display class
 
 Tawfek:
-- s
+- ReserveSeat()
+- Bus class
+- Display class
 
 Mohammed:
-- s
+- Index.html
+- Reserve-seat.html
+- Styles.css
+- DisplayReservedSeats()
 
 ## Description
 Bus Ticket Registration System where user can reserve a seat, view ticket details & view reserved seats and respective passenger names with the requirements of:
