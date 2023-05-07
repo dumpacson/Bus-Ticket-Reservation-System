@@ -11,19 +11,21 @@ Abdelhadi hadj sahraoui (1919059)
 
 ## Tasks
 Safwan:
-- Main class
 - Main()
 - DisplaySeats()
+- Styles.css
 
 Abdelhadi:
 - PrintReceipt()
 - Seat class
 - Display class
+- Styles.css
 
 Tawfek:
 - ReserveSeat()
 - Bus class
 - Display class
+- Styles.css
 
 Mohammed:
 - Index.html
