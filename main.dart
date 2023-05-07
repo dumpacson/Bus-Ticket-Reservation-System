@@ -37,8 +37,7 @@ void main() {
   document.body!.append(container);
 
   // Get a reference to the 'reserve' button in the HTML document
-  ButtonElement reserveButton =
-      querySelector('#reserve-button') as ButtonElement;
+  ButtonElement reserveButton = querySelector('#reserve-button') as ButtonElement;
 
   // Add a click event listener to the 'reserve' button
   reserveButton.onClick.listen((event) {
@@ -60,11 +59,12 @@ void main() {
     if (success) {
       displaySeats(seatsDiv, bus);
       printTicket(
-          receiptDiv,
-          selectedName,
-          selectedSeat,
-          bus.getSeat(selectedSeat)!.getSeatType(),
-          bus.getSeat(selectedSeat)!.getSeatPrice());
+        receiptDiv,
+        selectedName,
+        selectedSeat,
+        bus.getSeat(selectedSeat)!.getSeatType(),
+        bus.getSeat(selectedSeat)!.getSeatPrice()
+      );
 
       // Call the displayReservedSeats function to populate the table with reserved seats
       displayReservedSeats(table, bus, selectedName, selectedSeat);
@@ -122,8 +122,7 @@ void displaySeats(DivElement seatsDiv, Bus bus) {
   seatsDiv.children.add(seatsTable);
 }
 
-void printTicket(Element receiptDiv, String passengerName, String seatNumber,
-    String seatType, double seatPrice) {
+void printTicket(Element receiptDiv, String passengerName, String seatNumber, String seatType, double seatPrice) {
   // Create the receipt HTML
   String receiptHTML = '''
     <h3>Ticket Detail</h3>
@@ -140,7 +139,6 @@ void printTicket(Element receiptDiv, String passengerName, String seatNumber,
 }
 
 void displayReservedSeats(TableElement table, Bus bus, String name, String seatnum) {
-
   TableElement reservedSeatsTable = TableElement();
   reservedSeatsTable.classes.add('reserved-seats-table');
 
