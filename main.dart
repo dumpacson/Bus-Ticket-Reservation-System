@@ -5,10 +5,10 @@ import 'Seat.dart';
 void main() {
   // Create a new Bus object with 30 standard seats
   Bus bus = Bus();
-  
+
   // Get a reference to the 'seats' div in the HTML document
   DivElement seatsDiv = querySelector('#seats') as DivElement;
-  
+
   // Display the available seats in the 'seats' div
   displaySeats(seatsDiv, bus);
 
@@ -17,19 +17,19 @@ void main() {
 
   // Create a table element and add the table headers
   TableElement table = TableElement();
+  table.className = 'reserved-seats-table';
   TableRowElement headerRow = TableRowElement();
   table.append(headerRow);
-  TableCellElement seatHeader = TableCellElement();
-  seatHeader.text = 'Seat Number';
-  seatHeader.style.fontWeight = 'bold';
-  headerRow.append(seatHeader);
+
   TableCellElement passengerHeader = TableCellElement();
-  passengerHeader.text = 'Passenger Name';
+  passengerHeader.text = 'Seat Number';
   passengerHeader.style.fontWeight = 'bold';
   headerRow.append(passengerHeader);
-  // TableCellElement priceHeader = TableCellElement();
-  // priceHeader.text = 'Seat Price';
-  // headerRow.append(priceHeader);
+
+  TableCellElement seatHeader = TableCellElement();
+  seatHeader.text = 'Passenger Name';
+  seatHeader.style.fontWeight = 'bold';
+  headerRow.append(seatHeader);
 
   // Add the table to the container element
   DivElement container = DivElement();
@@ -37,8 +37,9 @@ void main() {
   document.body!.append(container);
 
   // Get a reference to the 'reserve' button in the HTML document
-  ButtonElement reserveButton = querySelector('#reserve-button') as ButtonElement;
-  
+  ButtonElement reserveButton =
+      querySelector('#reserve-button') as ButtonElement;
+
   // Add a click event listener to the 'reserve' button
   reserveButton.onClick.listen((event) {
     // Get the selected seat from the input field
@@ -46,16 +47,27 @@ void main() {
     String selectedSeat = seatInput.value!.toUpperCase(); // ! null check operator because seat cannot be null
     InputElement nameInput = querySelector('#name-input') as InputElement;
     String selectedName = nameInput.value!.toUpperCase();
-    
+
+    if (selectedName.isEmpty || selectedSeat.isEmpty) {
+      window.alert('Error! Please enter a name and a seat.');
+      return; // Exit the function
+    }
+
     // Attempt to reserve the selected seat
     bool success = bus.reserveSeat(selectedSeat, selectedName);
-    
+
     // If the seat was reserved successfully, update the display
     if (success) {
       displaySeats(seatsDiv, bus);
-      printReceipt(receiptDiv, selectedName, selectedSeat, bus.getSeat(selectedSeat)!.getSeatType(), bus.getSeat(selectedSeat)!.getSeatPrice());
+      printTicket(
+          receiptDiv,
+          selectedName,
+          selectedSeat,
+          bus.getSeat(selectedSeat)!.getSeatType(),
+          bus.getSeat(selectedSeat)!.getSeatPrice());
+
       // Call the displayReservedSeats function to populate the table with reserved seats
-      displayReservedSeats(table, bus);
+      displayReservedSeats(table, bus, selectedName, selectedSeat);
 
       // Clear the input field
       nameInput.value = '';
@@ -63,6 +75,7 @@ void main() {
     } else {
       // Otherwise, display an error message
       window.alert('Error! Please select another seat.');
+
       // Clear the input field
       seatInput.value = '';
     }
@@ -90,10 +103,11 @@ void displaySeats(DivElement seatsDiv, Bus bus) {
         // Set the cell text to the seat number and color based on availability
         if (seat.isReserved) {
           cell.text = 'X';
-          cell.style.backgroundColor = 'gray';
+          cell.style.color = '#F9F6F0';
+          cell.style.backgroundColor = '#28282B';
         } else {
           cell.text = seat.seatNumber;
-          cell.style.backgroundColor = 'green';
+          cell.style.backgroundColor = '#4CAF50';
         }
         cell.style.textAlign = 'center';
 
@@ -108,42 +122,39 @@ void displaySeats(DivElement seatsDiv, Bus bus) {
   seatsDiv.children.add(seatsTable);
 }
 
-void printReceipt(Element receiptDiv, String passengerName, String seatNumber, String seatType, double seatPrice) {
+void printTicket(Element receiptDiv, String passengerName, String seatNumber,
+    String seatType, double seatPrice) {
   // Create the receipt HTML
   String receiptHTML = '''
     <h3>Ticket Detail</h3>
-    <p><strong>Passenger Name:</strong> $passengerName</p>
+    <p><strong>Passenger  Name:</strong> $passengerName</p>
     <p><strong>Seat Number:</strong> $seatNumber</p>
     <p><strong>Seat Type:</strong> $seatType</p>
     <p><strong>Seat Price:</strong> RM${seatPrice.toStringAsFixed(2)}</p>
+  
+    <hr/><h3>Reserved Seats</h3>
   ''';
 
   // Display the receipt in the receiptDiv element
   receiptDiv.innerHtml = receiptHTML;
 }
 
-void displayReservedSeats(TableElement table, Bus bus) {
-  // Loop through the seats in the bus
-  for (Seat? seat in bus.getSeats()) {
-    if (seat != null && seat.isReserved == true) {
-      // Create a table row for each reserved seat
-      TableRowElement seatRow = TableRowElement();
-      table.append(seatRow);
+void displayReservedSeats(TableElement table, Bus bus, String name, String seatnum) {
 
-      // Create a cell for the seat number
-      TableCellElement seatCell = TableCellElement();
-      seatCell.text = seat.getSeatNumber();
-      seatRow.append(seatCell);
+  TableElement reservedSeatsTable = TableElement();
+  reservedSeatsTable.classes.add('reserved-seats-table');
 
-      // Create a cell for the passenger name
-      TableCellElement passengerCell = TableCellElement();
-      passengerCell.text = seat.getPassengerName() ?? '';
-      seatRow.append(passengerCell);
+  // Create a table row for each reserved seat
+  TableRowElement seatRow = TableRowElement();
+  table.append(seatRow);
 
-      // TableCellElement priceCell = TableCellElement();
-      // priceCell.text = seat.getSeatPrice() ?? '';
-      // seatRow.append(priceCell);
-    }
-  }
+  // Create a cell for the seat number
+  TableCellElement seatCell = TableCellElement();
+  seatCell.text = seatnum;
+  seatRow.append(seatCell);
+
+  // Create a cell for the passenger name
+  TableCellElement passengerCell = TableCellElement();
+  passengerCell.text = name;
+  seatRow.append(passengerCell);
 }
-
