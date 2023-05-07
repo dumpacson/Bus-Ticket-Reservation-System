@@ -16,7 +16,7 @@ Safwan:
 - Styles.css
 
 Abdelhadi:
-- PrintReceipt()
+- PrintTicket()
 - Seat class
 - Display class
 - Styles.css
