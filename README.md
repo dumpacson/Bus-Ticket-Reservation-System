@@ -5,9 +5,9 @@ Ahmad NorSafwan Bin Norasidin (2010279)
 
 Tawfek W. M. Elgaafarawy (1720305)
 
-Alsharif mohammad marwan ahmad (1828937)
+Alsharif Mohammad Marwan Ahmad (1828937)
 
-Abdelhadi hadj sahraoui (1919059)
+Abdelhadi Hadj Sahraoui (1919059)
 
 ## Tasks
 Safwan:
