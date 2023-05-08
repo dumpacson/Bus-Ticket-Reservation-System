@@ -134,7 +134,7 @@ void printTicket(Element receiptDiv, String passengerName, String seatNumber, St
     <hr/><h3>Reserved Seats</h3>
   ''';
 
-  // Display the receipt in the receiptDiv element
+   // Display the receipt in the receiptDiv element
   receiptDiv.innerHtml = receiptHTML;
 }
 
