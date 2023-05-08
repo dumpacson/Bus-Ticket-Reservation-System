@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="scaffolded-by" content="https://github.com/dart-lang/sdk" />
+    <title>quickstart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.dart.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <h2>Bus Ticket Reservation System</h2>
+    </div>
+    <div class="seat-type">
+      <form>
+        <label for="single">Single (A): RM50</label>
+        <label for="double-aisle">Double-Aisle (B): RM30</label>
+        <label for="double-window">Double-Window (C): RM40</label>
+      </form>
+    </div>
+    <div id="seats"></div>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="name-input">Name:</label>
+          <input type="text" id="name-input" name="name">
+        </div>
+        <div class="form-group">
+          <label for="seat-input">Seat:</label>
+          <input type="text" id="seat-input" name="seat">
+        </div>
+        <br>
+        <button id="reserve-button" type="button">Reserve Seat</button>
+      </form>
+      <hr/>
+      <div id="booking-receipt"></div>
+    </div>
+  </body>
+</html>
