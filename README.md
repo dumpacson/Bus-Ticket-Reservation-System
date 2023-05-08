@@ -18,7 +18,7 @@ Safwan:
 Abdelhadi:
 - PrintTicket()
 - Seat class
-- Index.html
+- Display class
 - Styles.css
 
 Tawfek:
