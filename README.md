@@ -24,7 +24,7 @@ Abdelhadi:
 Tawfek:
 - ReserveSeat()
 - Bus class
-- Display class
+- Index.html
 - Styles.css
 
 Mohammed:
