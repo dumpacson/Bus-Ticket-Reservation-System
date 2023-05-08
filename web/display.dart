@@ -14,6 +14,7 @@ class Display {
   WELCOME TO BUS TICKET REGISTRATION SYSTEM!
     ''');
 
+    
     while (true) {
        print('''
   1. Display available seats
