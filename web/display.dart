@@ -15,7 +15,7 @@ class Display {
     ''');
 
     while (true) {
-      print('''
+       print('''
   1. Display available seats
   2. Reserve a seat
   3. Exit
