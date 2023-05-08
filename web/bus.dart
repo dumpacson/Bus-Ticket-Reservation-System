@@ -34,7 +34,7 @@ class Bus implements Iterable<Bus> {
     }
   }
 
-// Reserve a seat for the given passenger name
+ // Reserve a seat for the given passenger name
   bool reserveSeat(String seatNumber, String passengerName) {
     // Check if seatNumber input is numeric
     if (num.tryParse(seatNumber) != null) {
