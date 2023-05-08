@@ -3,7 +3,7 @@ class Seat implements Iterable<Seat> {
   String seatType;
   bool isReserved;
   double seatPrice;
-  String? _passengerName; // private field for passenger name
+  String? _passengerName;  // private field for passenger name
 
   Seat(this.seatNumber, this.seatType, this.isReserved, this.seatPrice);
 
