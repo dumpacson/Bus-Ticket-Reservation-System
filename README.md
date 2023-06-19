@@ -10,24 +10,24 @@ Alsharif Mohammad Marwan Ahmad (1828937)
 Abdelhadi Hadj Sahraoui (1919059)
 
 ## Tasks
-Safwan:
+**Safwan:**
 - Main()
 - DisplaySeats()
 - Styles.css
 
-Abdelhadi:
+**Abdelhadi:**
 - PrintTicket()
 - Seat class
 - Display class
 - Styles.css
 
-Tawfek:
+**Tawfek:**
 - ReserveSeat()
 - Bus class
 - Index.html
 - Styles.css
 
-Mohammed:
+**Mohammed:**
 - Display class
 - Reserve-seat.html
 - Styles.css
